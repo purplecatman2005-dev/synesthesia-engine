@@ -15,6 +15,15 @@
 `SpectralView` から見た音のスペクトルがその場で変わる（コピーも変換も発生しない）。
 `fuse` モードでは ViT の Attention マップが画像ビュー経由で音を直接変調する。
 
+## 実行結果(`composer.exe demo`)
+
+| 入力画像(幾何学模様) | `see`: 音(アルペジオ)→ 画像 | `fuse`: ViT Attention で相互変調 |
+|---|---|---|
+| <img src="docs/demo_image.png" width="200" alt="入力の幾何学模様"> | <img src="docs/demo_see.png" width="300" alt="アルペジオのスペクトログラム"> | <img src="docs/demo_fuse.png" width="300" alt="画像で変調されたスペクトログラム"> |
+
+- `see` / `fuse` の画像は横軸=時間、縦軸=周波数(下が低域)。ここでは 0〜約4.1kHz の帯を拡大して表示
+- `fuse` では、入力画像の顕著性マップが共有バッファ経由で音のスペクトルを書き換えるため、画像の同心円模様がスペクトログラムの背景に現れる
+
 ## ビルドと実行
 
 ```bat
